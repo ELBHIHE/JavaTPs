@@ -2,6 +2,7 @@ package tps.tp2.equations;
 
 import tps.tp2.nombres.Complex;
 import tps.tp2.nombres.ServiceComplexes;
+import tps.utils.ConsoleFontFormat;
 
 import java.util.Scanner;
 
@@ -53,4 +54,43 @@ public class ServiceEquations {
         }
 
     }
+
+    public static void menuEquations(Scanner keyboardReader) {
+    while (true) {
+        System.out.print(ConsoleFontFormat.FontFormat_BOLD + ConsoleFontFormat.FontFormat_BLUE);
+        System.out.print("""
+            ===================================================
+            =                 Equation Operations              =
+            ===================================================
+            = 1. Créer et résoudre une équation              =
+            = 2. Quitter                                      =
+            ===================================================
+            """);
+        System.out.print(ConsoleFontFormat.FontFormat_RESET);
+        System.out.print(ConsoleFontFormat.FontFormat_BOLD + ConsoleFontFormat.FontFormat_GREEN);
+        System.out.print("=> Entrez votre choix : ");
+        
+        int choice = keyboardReader.nextInt();
+        keyboardReader.nextLine();  // Vider le buffer
+
+        switch (choice) {
+            case 1 -> {
+                System.out.print(ConsoleFontFormat.FontFormat_BOLD + ConsoleFontFormat.FontFormat_PURPLE);
+                resoudre(keyboardReader);
+                System.out.print(ConsoleFontFormat.FontFormat_RESET);
+            }
+            case 2 -> {
+                System.out.print(ConsoleFontFormat.FontFormat_BOLD + ConsoleFontFormat.FontFormat_RED);
+                System.out.println("Retour au menu principal...");
+                System.out.print(ConsoleFontFormat.FontFormat_RESET);
+                return;
+            }
+            default -> {
+                System.out.print(ConsoleFontFormat.FontFormat_BOLD + ConsoleFontFormat.FontFormat_RED);
+                System.out.println("Choix invalide! Veuillez réessayer.");
+                System.out.print(ConsoleFontFormat.FontFormat_RESET);
+            }
+        }
+    }
+}
 }

@@ -8,7 +8,9 @@ import tps.tp2.bankati.modele.Client;
 import tps.tp2.bankati.service.BankService;
 import tps.tp2.bankati.service.ClientServices;
 import tps.tp2.bibliotheque.Bibliotheque;
+import tps.tp2.equations.ServiceEquations;
 import tps.tp2.formsGeometrique.Rectangle;
+import tps.tp2.nombres.ServiceComplexes;
 import tps.utils.ConsoleFontFormat;
 
 public class TestTp2 {
@@ -28,49 +30,56 @@ public class TestTp2 {
           boolean continuer = true;
   
           while (continuer) {
-             System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_BLUE);
-              System.out.println("""
-                  ===================================================
-                  =                Application Java                   =
-                  ===================================================
-                  = 1. Exercice : Rectangle                          =
-                  = 2. Exercice : Bibliothèque                      =
-                  = 3. Exercice : Bankati                           =
-                  = 4. Quitter                                      =
-                  ===================================================
-                  """);
-              System.out.print(ConsoleFontFormat.FontFormat_RESET);
-              System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_GREEN);
-              System.out.print("=> Entrez votre choix : ");
-              
-              int choix = scanner.nextInt();
-              scanner.nextLine(); // Vider le buffer
-              System.out.print(ConsoleFontFormat.FontFormat_RESET);
-  
-              switch (choix) {
-                  case 1:
-                      rectangleMenu(scanner);
-                      break;
-                  case 2:
-                      bibliothequeMenu(scanner);
-                      break;
-                  case 3:
-                      menuBankati();
-                      break;
-                  case 4:
-                      System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_RED);
-                      System.out.println("Au revoir !");
-                      System.out.print(ConsoleFontFormat.FontFormat_RESET);
-                      continuer = false;
-                      break;
-                  default:
-                  System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_RED);
-                  System.out.println("Choix Invalide, Veuillez rééssayer !!");
-                  System.out.print(ConsoleFontFormat.FontFormat_RESET);
-              }
-          }
-          scanner.close();
-      }
+            System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_BLUE);
+            System.out.println("""
+                ===================================================
+                =                Application Java                 =
+                ===================================================
+                = 1. Exercice : Nombres Complexes                 =
+                = 2. Exercice : Equations de deuxième degrés      =
+                = 3. Exercice : Rectangle                         =
+                = 4. Exercice : Bibliothèque                      =
+                = 5. Exercice : Bankati                           =
+                = 6. Quitter                                      = 
+                ===================================================
+                """);
+            System.out.print(ConsoleFontFormat.FontFormat_RESET);
+            System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_GREEN);
+            System.out.print("=> Entrez votre choix : ");
+            
+            int choix = scanner.nextInt();
+            scanner.nextLine(); // Vider le buffer
+            System.out.print(ConsoleFontFormat.FontFormat_RESET);
+        
+            switch (choix) {
+                case 1:
+                    menuNombresComplexes();
+                    break;
+                case 2:
+                    menuDesEquations();
+                    break;
+                case 3:
+                    rectangleMenu(scanner);
+                    break;
+                case 4: // Ajout de ce cas
+                    bibliothequeMenu(scanner);
+                    break;
+                case 5:
+                    menuBankati();
+                    break;
+                case 6: // Modification du numéro
+                    System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_RED);
+                    System.out.println("Au revoir !");
+                    System.out.print(ConsoleFontFormat.FontFormat_RESET);
+                    continuer = false;
+                    break;
+                default:
+                    System.out.print(ConsoleFontFormat.FontFormat_BOLD+ConsoleFontFormat.FontFormat_RED);
+                    System.out.println("Choix Invalide, Veuillez rééssayer !!");
+                    System.out.print(ConsoleFontFormat.FontFormat_RESET);
+                }
+             }
+        }
 
     private static void initialiserBanque() {
         // Initialisation de la banque avec des données de test
@@ -432,4 +441,12 @@ public class TestTp2 {
       private static void bibliothequeMenu(Scanner scanner) {
           Bibliotheque.menuBiblio(scanner); 
       }
+
+      private static void menuNombresComplexes() {
+            ServiceComplexes.menuApplication(scanner);
+      }
+
+      private static void menuDesEquations() {
+        ServiceEquations.menuEquations(scanner);
+  }
 }
